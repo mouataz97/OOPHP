@@ -4,11 +4,13 @@ declare(strict_types=1);
 class Transaction
 {
     private float $amount;
-    private string $description;
 
     // constructor
-    public function __construct(float $amount, string $description)
-    {
+    public function __construct
+    (
+        float $amount,
+        private ?string $description = null
+    ){
         $this->amount = $amount;
         $this->description = $description;
     }

@@ -2,8 +2,12 @@
 
 declare(strict_types=1);
 require_once '../Transaction.php';
+require_once 'Customer.php';
+require_once 'PaymentProfile.php';
 
 # Classes & Objects
+
+echo $myTransaction1?->Cosumer->PaymentProfile->id;
 
 $myTransaction1 = (new Transaction(100, 'Transaction 1'))
     ->addTax(10)
