@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+<<<<<<< HEAD
 require_once '../Transaction.php';
 require_once 'Customer.php';
 require_once 'PaymentProfile.php';
@@ -21,3 +22,6 @@ $myTransaction2 = (new Transaction(200, 'Transaction 2'))
 
 var_dump($myTransaction1->getAmount(), $myTransaction2->getAmount());
 */
+=======
+require_once '../Payment/Stripe/old_Transaction.php';
+>>>>>>> refs/remotes/origin/main

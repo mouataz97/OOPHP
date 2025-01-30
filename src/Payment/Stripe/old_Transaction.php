@@ -3,9 +3,15 @@
 declare(strict_types=1);
 class Transaction
 {
+<<<<<<< HEAD:src/Transaction.php
     //private float $amount;
     private ?Customer $customer = null;
+=======
+    /*
+    private float $amount;
+>>>>>>> refs/remotes/origin/main:src/Payment/Stripe/old_Transaction.php
 
+    
     // constructor
     public function __construct
     (
@@ -40,5 +46,11 @@ class Transaction
     {
         echo "Transaction {$this->description} has been processed.\n";
     }
+<<<<<<< HEAD:src/Transaction.php
 */
 }
+=======
+
+    */
+}
+>>>>>>> refs/remotes/origin/main:src/Payment/Stripe/old_Transaction.php
