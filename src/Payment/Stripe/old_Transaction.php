@@ -3,8 +3,10 @@
 declare(strict_types=1);
 class Transaction
 {
+    /*
     private float $amount;
 
+    
     // constructor
     public function __construct
     (
@@ -36,4 +38,6 @@ class Transaction
     {
         echo "Transaction {$this->description} has been processed.\n";
     }
+
+    */
 }
