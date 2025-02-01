@@ -1,7 +1,8 @@
 <?php
 
-require_once '../Payment/paddle/Tansaction.php';
-//require_once '../Payment/Stripe/Transaction.php'
+require_once '../PaymentGateWay/paddle/Tansaction.php';
+require_once '../PaymentGateWay/Stripe/Transaction.php'
 
+use PaymentGateWay\Paddle\Transaction;
 
-var_dump(new mouataz\Transaction());
+var_dump(new Transaction());
