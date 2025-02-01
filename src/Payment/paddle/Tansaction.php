@@ -2,7 +2,7 @@
 
 declare(strict_types= 1);
 
-function foo(){}
+namespace mouataz;
 
 class Transaction{
 
