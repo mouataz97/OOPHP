@@ -1,10 +1,7 @@
 <?php
 
-require_once '../PaymentProfile.php';
-require_once '../Customer.php';
-require_once '../Transaction.php';
+require_once '../Payment/paddle/Tansaction.php';
+require_once '../Payment/Stripe/Transaction.php'
 
 
-$transacton = new Transaction(4, 'test');
-
-echo $transacton->getCustomer()?->getPaymentProfile()?->id ?? 'foo';
+var_dump(ne Transaction());

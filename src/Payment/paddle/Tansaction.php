@@ -4,7 +4,6 @@ declare(strict_types= 1);
 
 function foo(){}
 
-class Transaction
-{
+class Transaction{
 
 }
