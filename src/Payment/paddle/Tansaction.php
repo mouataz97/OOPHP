@@ -9,6 +9,6 @@ use Customer;
 class Transaction{
     public function __construct()
     {
-        var_dump(new Customer());
+        var_dump(new \Customer());
     }
 }
