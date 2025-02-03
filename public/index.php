@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 //define(__DIR__, '../');
 
-require_once '../src/Payment/Paddle/Transaction.php';
-//require_once '../PaymentGateWay/Stripe/Transaction.php';
-//require_once '../Payment/Paddle/Customer.php';
-require_once '../src/Payment/Paddle/DateTime.php';
+require_once '../App/Payment/Paddle/Transaction.php';
+require_once '../App/Payment/Paddle/Customer.php';
+require_once '../App/Notification/Email.php';
+require_once '../App/Payment/Paddle/DateTime.php';
 
-use Payment\Paddle\Transaction;
+use App\Payment\Paddle\Transaction;
 
-var_dump(new Transaction());
+$paddleTransaction = new Transaction();
+var_dump($paddleTransaction);

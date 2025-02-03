@@ -2,7 +2,7 @@
 
 declare(strict_types= 1);
 
-namespace Payment\Paddle;
+namespace App\Payment\Paddle;
 
 //use DateTime;
 
