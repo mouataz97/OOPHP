@@ -2,9 +2,9 @@
 
 declare(strict_types= 1);
 
-namespace PaymentGateWay\Paddle;
+namespace Payment\Paddle;
 
-use DateTime;
+//use DateTime;
 
 class Transaction{
     public function __construct()
