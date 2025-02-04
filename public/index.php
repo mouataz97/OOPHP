@@ -2,12 +2,15 @@
 
 declare(strict_types=1);
 
-//define(__DIR__, '../');
+//echo __DIR__ . '/../' . PHP_EOL;
 
-require_once '../App/Payment/Paddle/Transaction.php';
-require_once '../App/Payment/Paddle/Customer.php';
-require_once '../App/Notification/Email.php';
-require_once '../App/Payment/Paddle/DateTime.php';
+spl_autoload_register(function ($class){
+//    var_dump($class);
+//    die();
+   $PATH = __DIR__ . '/../' . str_replace('\\', '/', $class) . '.php';
+    if(file_exists($PATH))
+    require_once $PATH;
+});
 
 use App\Payment\Paddle\Transaction;
 
