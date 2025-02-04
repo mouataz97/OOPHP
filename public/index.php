@@ -1,18 +1,11 @@
 <?php
 
-declare(strict_types=1);
-
-//echo __DIR__ . '/../' . PHP_EOL;
-
-spl_autoload_register(function ($class){
-//    var_dump($class);
-//    die();
-   $PATH = __DIR__ . '/../' . str_replace('\\', '/', $class) . '.php';
-    if(file_exists($PATH))
-    require_once $PATH;
-});
+require __DIR__ . '/../vendor/autoload.php';
 
 use App\Payment\Paddle\Transaction;
 
 $paddleTransaction = new Transaction();
+
+$id = new \Ramsey\Uuid\UuidFactory();
+echo $id->uuid4();
 var_dump($paddleTransaction);

@@ -1,5 +1,10 @@
 {
     "require": {
-        "ramsey/uuid": "*"
+        "ramsey/uuid": "^4.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
     }
 }
