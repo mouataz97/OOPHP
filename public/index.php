@@ -2,10 +2,13 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 use App\Payment\Paddle\Transaction;
+use App\Enums\Status;
 
 $transaction = new Transaction();
-//echo $transaction::STATUS_PAID;
-echo $transaction->setStatus('paid');
-var_dump($transaction);
+$transaction->setStatus(Status::PAID);
+var_dump($transaction); // You can inspect the entire object with var_dump
 
-//echo $id->uuid4();
+//echo $transaction->getStatus(); // This will print 'paid'
+
+
+?>
