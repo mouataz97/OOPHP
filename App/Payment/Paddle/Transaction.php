@@ -5,12 +5,18 @@ namespace App\Payment\Paddle;
 
 class Transaction
 {
-    private const string STATUS_PAID = 'paid';
+    public const string STATUS_PAID = 'paid';
     public const string STATUS_PENDING = 'pending';
     public const string STATUS_DECLINED = 'declined';
+    private string $status;
     public function __construct()
     {
-        var_dump(self::STATUS_PAID);
+        $this->setStatus(self::STATUS_PAID);
+    }
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
+        return $this;
     }
 }
 
