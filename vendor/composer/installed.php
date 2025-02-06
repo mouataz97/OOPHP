@@ -3,7 +3,7 @@
         'name' => '__root__',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '662f4ed7ae9dc108a006e293414bd2bcac8a46dd',
+        'reference' => 'cfc59a9ee7caf12a4312fe1b140e96aa58248050',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         '__root__' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '662f4ed7ae9dc108a006e293414bd2bcac8a46dd',
+            'reference' => 'cfc59a9ee7caf12a4312fe1b140e96aa58248050',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -51,6 +51,15 @@
             'replaced' => array(
                 0 => '4.7.6',
             ),
+        ),
+        'symfony/polyfill-ctype' => array(
+            'pretty_version' => 'v1.31.0',
+            'version' => '1.31.0.0',
+            'reference' => 'a3cc8b044a6ea513310cbd48ef7333b384945638',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/polyfill-ctype',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
     ),
 );
