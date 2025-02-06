@@ -14,8 +14,11 @@ class Transaction
         self::$count++;
     }
 
-    public static function getCount(): int
+    public function getCount(): int
     {
+        array_map(function(){
+            var_dump($this->amount);
+        }, [1]);
         return self::$count;
     }
 

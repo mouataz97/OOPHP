@@ -19,6 +19,7 @@ $transaction = new Transaction(5,'tony alba');
 
 $db = new DB([]);
 $transaction = new Transaction(25,'test');
+$transaction->process();
 var_dump($transaction->getCount());
 
 ?>
