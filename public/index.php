@@ -18,5 +18,7 @@ $transaction = new Transaction(5,'tony alba');
 //$db = DB::getInstance([]);
 
 $db = new DB([]);
+$transaction = new Transaction(25,'test');
+var_dump($transaction->getCount());
 
 ?>
