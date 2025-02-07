@@ -16,7 +16,7 @@ class Transaction
     {
         return $this->amount ;
     }
-    public function setAmount(float $amount): float
+    public function setAmount(float $amount): void
     {
         $this->amount = $amount;
     }
