@@ -23,7 +23,7 @@ class Transaction
     }
 
     public function process(){
-        echo 'Processing paddle transaction...';
+        echo 'Processe... ' . $this->amount . ' Transaction';
     }
 
 //    private string $status;
