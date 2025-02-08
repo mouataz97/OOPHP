@@ -2,14 +2,14 @@
 
 namespace App;
 
-class Toster
+class Toaster
 {
     public array $slices = [];
     public int $size = 2;
 
     public function addSlice(string $slice):void
     {
-        if(count($this->slices)<$this->size){
+        if(count($this->slices) < $this->size){
             $this->slices[] = $slice;
         }
     }
