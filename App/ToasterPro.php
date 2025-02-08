@@ -16,4 +16,5 @@ class ToasterPro extends Toaster
             echo($i + 1). ': Toasting ' . $slice .' with bagel ' . PHP_EOL;
         }
     }
+
 }
