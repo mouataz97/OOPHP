@@ -1,7 +1,8 @@
 <?php
 
 require __DIR__ . '/../vendor/autoload.php';  // Composer autoload
-use App\implementation\CollectionAgency;
+use App\implementation\DebtCollectionService;
+use App\implementation\Rocky;
 
-$collector = new CollectionAgency();
-echo $collector->collect(100) . PHP_EOL ;
+$Service = new DebtCollectionService();
+echo $Service->collectDebt(new Rocky()) . PHP_EOL ;
