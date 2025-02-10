@@ -1,5 +1,5 @@
 <?php
-namespace App\Implementation;
+namespace App\implementation;
 interface AnotherInterface
 {
     public function foo();
