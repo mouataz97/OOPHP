@@ -1,15 +1,15 @@
 <?php
 
 namespace App;
-# Magic Methods.
+# Magic Methods & How they work.
 
 class Inovice
 {
     protected array $data;
-    public function __construct(float $amount)
-    {
-        $this->amount = $amount;
-    }
+//    public function __construct(float $amount) // index cant work when i uncomment this method by calling in 2 lines
+//    {
+//        $this->amount = $amount;
+//    }
 
     public function __get(string $name)
     {

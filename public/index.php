@@ -3,8 +3,10 @@
 require __DIR__ . '/../vendor/autoload.php';  // Composer autoload
 use App\Inovice;
 
-$inovice = new Inovice(15);
+$inovice = new Inovice();
+$inovice->amount = 25;
 
 var_dump(isset($inovice->amount));
+
 unset($inovice->amount);
 var_dump($inovice->amount);
