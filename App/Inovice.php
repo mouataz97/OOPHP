@@ -5,6 +5,17 @@ namespace App;
 
 class Inovice
 {
+
+    public function __call(string $name, array $arguments)
+    {
+        var_dump($name, $arguments);
+    }
+    public static function __callStatic(string $name, array $arguments)
+    {
+        var_dump('static', $name, $arguments);
+    }
+
+    /*
     protected array $data;
 //    public function __construct(float $amount) // index cant work when i uncomment this method by calling in 2 lines
 //    {
@@ -31,4 +42,5 @@ class Inovice
     {
         unset($this->data[$name]);
     }
+    */
 }
