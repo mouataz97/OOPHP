@@ -1,5 +1,9 @@
 <?php
 
 require __DIR__ . '/../vendor/autoload.php';  // Composer autoload
-use App\implementation\DebtCollectionService;
-use App\implementation\Rocky;
+use App\Inovice;
+
+$inovice = new Inovice(15);
+$inovice->amount = 25;
+
+echo $inovice->amount;
