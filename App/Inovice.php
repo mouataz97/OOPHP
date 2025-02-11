@@ -7,17 +7,14 @@ use AllowDynamicProperties;
 
 class Inovice
 {
-    public function __construct($name)
+    private string $name = 'mouataz';
+    private float $age = 5;
+    private string $number;
+    public function __debugInfo(): ?array
     {
-        $this->name = $name;
-    }
-
-    public function __toString(): string
-    {
-        return 'Hello World!';
-    }
-    public function __invoke()
-    {
-        var_dump('invoked');
+        return [
+            'name' => $this->name,
+            'age' => 'test' . substr($this->age, -1),
+        ];
     }
 }
