@@ -5,7 +5,7 @@ namespace App;
 
 use AllowDynamicProperties;
 
-#[AllowDynamicProperties] class Inovice implements \Stringable
+class Inovice
 {
     public function __construct($name)
     {
@@ -15,5 +15,9 @@ use AllowDynamicProperties;
     public function __toString(): string
     {
         return 'Hello World!';
+    }
+    public function __invoke()
+    {
+        var_dump('invoked');
     }
 }
