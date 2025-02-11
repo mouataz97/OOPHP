@@ -5,10 +5,17 @@ namespace App;
 
 class Inovice
 {
+    public function process()
+    {
+        var_dump('process');
+    }
 
     public function __call(string $name, array $arguments)
     {
-        var_dump($name, $arguments);
+        if(method_exists($this, $name)){
+            call_user_func_array([$this, $name], $arguments,);
+//            $this->$name($arguments);
+        }
     }
     public static function __callStatic(string $name, array $arguments)
     {

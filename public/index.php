@@ -4,7 +4,7 @@ require __DIR__ . '/../vendor/autoload.php';  // Composer autoload
 use App\Inovice;
 
 $inovice = new Inovice();
-$inovice::process(1,2,3);
+$inovice->process(13, 'test');
 
 /*
 $inovice = new Inovice();
