@@ -5,7 +5,7 @@ namespace App;
 
 class Inovice
 {
-    protected float $amount;
+    protected array $data;
     public function __construct(float $amount)
     {
         $this->amount = $amount;
@@ -13,14 +13,22 @@ class Inovice
 
     public function __get(string $name)
     {
-        if(property_exists($this, $name)){
-            return $this->$name;
+        if(array_key_exists($name, $this->data)){
+            return $this->data[$name];
         }
 
         return null;
     }
     public function __set(string $name, $value): void
     {
-        $this->$name = $value;
+        $this->data[$name] = $value;
+    }
+    public function __isset(string $name): bool
+    {
+        return array_key_exists($name, $this->data);
+    }
+    public function __unset(string $name): void
+    {
+        unset($this->data[$name]);
     }
 }
