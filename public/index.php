@@ -18,3 +18,4 @@ $allInOne = new AllInOneCoffeeMaker();
 $allInOne->makeCappuccino();
 $allInOne->makeCoffee();
 $allInOne->makeLatte();
+$allInOne->makeOriginaleLatte();
