@@ -8,4 +8,8 @@ trait CappuccinoTrait
     {
         echo static::class . ' is making cappuccino' . PHP_EOL;
     }
+    public function makeCoffee()
+    {
+        echo ' is making coffee from trait ' . PHP_EOL;
+    }
 }
