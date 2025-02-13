@@ -2,7 +2,7 @@
 
 namespace App\CoffeeShop;
 
-class AllInOneCoffeeMaker
+class AllInOneCoffeeMaker extends CoffeeMaker
 {
 
 }
