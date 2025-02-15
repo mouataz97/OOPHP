@@ -15,10 +15,10 @@ class ClassA
     }
     public function bar(): object
     {
-        return new class($this->x, $this->y) {
-            public function __construct(public int $x, public int $y)
+        return new class($this) {
+            public function __construct(ClassA $myObj)
             {
-                var_dump($x, $y);
+                var_dump($myObj);
             }
         };
     }
