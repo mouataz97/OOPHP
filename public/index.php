@@ -2,20 +2,27 @@
 
 require __DIR__ . '/../vendor/autoload.php';  // Composer autoload
 //use App\CoffeeShop\CoffeeMaker;
+use App\CoffeeShop\CoffeeMaker;
 use App\CoffeeShop\LatteMaker;
 use App\CoffeeShop\CappuccinoMaker;
 use App\CoffeeShop\AllInOneCoffeeMaker;
 
-$latteMaker = new LatteMaker();
-$latteMaker->makeCoffee();
-$latteMaker->makeLatte();
+//$latteMaker = new LatteMaker();
+//$latteMaker->makeCoffee();
+//$latteMaker->makeLatte();
+//
+//$coffeeMaker = new CappuccinoMaker();
+//$coffeeMaker->makeCoffee();
+//$coffeeMaker->makeCappuccino();
+//
+//$allInOne = new AllInOneCoffeeMaker();
+//$allInOne->makeCappuccino();
+//$allInOne->makeCoffee();
+//$allInOne->makeLatte();
 
-$coffeeMaker = new CappuccinoMaker();
-$coffeeMaker->makeCoffee();
-$coffeeMaker->makeCappuccino();
+//LatteMaker::foo();
 
-$allInOne = new AllInOneCoffeeMaker();
-$allInOne->makeCappuccino();
-$allInOne->makeCoffee();
-$allInOne->makeLatte();
-$allInOne->makeOriginaleLatte();
+CoffeeMaker::$foo = 'foo';
+LatteMaker::$foo = 'bar';
+
+echo CoffeeMaker::$foo . ' ' . LatteMaker::$foo . PHP_EOL;
