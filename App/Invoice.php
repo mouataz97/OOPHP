@@ -6,10 +6,7 @@ namespace App;
 
 class Invoice
 {
-    use Mail;
-    public function process()
+    public function __construct(public float $amount, public string $description)
     {
-        echo 'Processed invoice' . PHP_EOL;
-        $this->sendEmail();
     }
 }
