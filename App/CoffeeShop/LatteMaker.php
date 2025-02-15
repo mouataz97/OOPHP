@@ -5,8 +5,9 @@ namespace App\CoffeeShop;
 class LatteMaker extends CoffeeMaker
 {
     use LatteTrait;
-    public static function foo()
+
+    public function makeLatte()
     {
-        echo 'Foo Bar';
+        echo 'Making-latte';
     }
 }

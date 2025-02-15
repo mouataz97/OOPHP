@@ -5,7 +5,8 @@ namespace App\CoffeeShop;
 trait LatteTrait
 {
     private string $milkType = 'whole-milk';
-    public function makeLatte()
+
+    final function makeLatte()
     {
         echo static::class . ' Making latte ' . $this->milkType . PHP_EOL;
     }
