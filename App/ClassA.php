@@ -15,8 +15,12 @@ class ClassA
     }
     public function bar(): object
     {
-        return new class {
-
+        return new class extends ClassA {
+            public function __construct(public int $x, public int $y)
+            {
+                parent::__construct($x, $y);
+                echo $this->foo();
+            }
         };
     }
 }
