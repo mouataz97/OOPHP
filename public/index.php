@@ -3,13 +3,10 @@
 require __DIR__ . '/../vendor/autoload.php';  // Composer autoload
 
 use \App\Invoice;
+use App\Customer;
 
-# Object & Serialize Magic Methods
+# Exceptions: Try-Catch || OOP Error Handling
 
-$invocie1 = new Invoice(3, 'invoice1', '12312312');
+$invoice = new Invoice(new Customer());
 
-$str = serialize($invocie1);
-echo $str;
-
-$invoice2 = unserialize($str);
-var_dump($invoice2);
+$invoice->process(25);

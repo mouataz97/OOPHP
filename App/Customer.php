@@ -5,5 +5,12 @@ namespace App;
 
 class Customer
 {
-    public string $name;
+    public function __construct(private array $billingInfo = [])
+    {
+    }
+
+    public function getbillingInfo(): array
+    {
+        return $this->billingInfo;
+    }
 }
