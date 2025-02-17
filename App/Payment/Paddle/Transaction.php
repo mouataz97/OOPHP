@@ -6,17 +6,17 @@ namespace App\Payment\Paddle;
 use App\Customer;
 
 /**
- * @property-read int $x
- * @property-write float $y
+ * @method static int foo(string $x)
  */
 class Transaction
 {
-    public function __get(string $name)
+    public function __call(string $name, array $arguments)
     {
-        // TODO: Implement __get() method.
+        // TODO: Implement __call() method.
     }
-    public function __set(string $name, $value): void
+
+    public static function __callStatic(string $name, array $arguments)
     {
-        // TODO: Implement __set() method.
+        // TODO: Implement __callStatic() method.
     }
 }
