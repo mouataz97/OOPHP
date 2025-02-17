@@ -6,7 +6,16 @@ namespace App;
 
 class Invoice
 {
-    public function __construct(public float $amount, public string $description)
+    private string $id;
+    public function __construct()
     {
+        $this->id = uniqid('invoice_');
+        var_dump('__construct');
+    }
+
+    public function __clone(): void
+    {
+        $this->id = uniqid('invoice_');
+        var_dump('clone');
     }
 }
