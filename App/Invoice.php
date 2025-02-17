@@ -14,14 +14,6 @@ class Invoice
     {
         $this->id = uniqid('invoice_');
     }
-//    public function __sleep(): array
-//    {
-//        return [$id, $amount];
-//    }
-    public function __wakeup(): void
-    {
-        // TODO: Implement __wakeup() method.
-    }
     public function __serialize(): array
     {
         return [
@@ -34,6 +26,10 @@ class Invoice
     }
     public function __unserialize(array $data): void
     {
-        // TODO: Implement __unserialize() method.
+//        var_dump($data);
+        $this->id = $data['id'];
+        $this->amount = $data['amount'];
+        $this->description = $data['description'];
+        $this->creditCard = base64_decode($data['creditCard']);
     }
 }
