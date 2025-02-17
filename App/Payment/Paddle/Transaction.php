@@ -10,26 +10,19 @@ use App\Customer;
 
 class Transaction
 {
+    /** @var Customer */
     private $customer;
+    /** @var float */
     private $amount;
+
     /**
-     *  description
-     *
-     * @program Customer $custumer
-     * @program float $amount
-     *
-     * @throw \RuntimeException
-     * @throw \InvalidArgumentException
-     *
-     * @return bool
+     * @param Customer[] $arr
+     * @return void
      */
-    public function process(Customer $customer, float $amount): bool
+    public function foo(array $arr)
     {
-        // process transaction
-
-        // if failed, return true
-
-        // otherwise return true
-        return true;
+        foreach ($arr as $obj){
+            $obj->name;
+        }
     }
 }
