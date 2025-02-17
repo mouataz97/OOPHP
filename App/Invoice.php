@@ -11,7 +11,7 @@ class Invoice
     public function process(float $amount): void
     {
         if($amount <= 0) {
-            throw new \Exception(' Invalid invoice amount');
+            throw new \MissingBillingInfoException(' Invalid invoice amount');
         }
         echo 'Processing $' . $amount . ' invoice -';
         sleep(1);

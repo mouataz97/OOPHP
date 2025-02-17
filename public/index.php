@@ -9,4 +9,4 @@ use App\Customer;
 
 $invoice = new Invoice(new Customer());
 
-$invoice->process(25);
+$invoice->process(-25);
