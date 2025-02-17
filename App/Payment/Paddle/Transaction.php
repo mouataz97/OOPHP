@@ -3,26 +3,20 @@
 declare(strict_types= 1);
 namespace App\Payment\Paddle;
 
-
 use App\Customer;
 
-
-
+/**
+ * @property-read int $x
+ * @property-write float $y
+ */
 class Transaction
 {
-    /** @var Customer */
-    private $customer;
-    /** @var float */
-    private $amount;
-
-    /**
-     * @param Customer[] $arr
-     * @return void
-     */
-    public function foo(array $arr)
+    public function __get(string $name)
     {
-        foreach ($arr as $obj){
-            $obj->name;
-        }
+        // TODO: Implement __get() method.
+    }
+    public function __set(string $name, $value): void
+    {
+        // TODO: Implement __set() method.
     }
 }
