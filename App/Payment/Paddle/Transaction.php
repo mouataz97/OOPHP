@@ -4,24 +4,32 @@ declare(strict_types= 1);
 namespace App\Payment\Paddle;
 
 
+use App\Customer;
+
+
+
 class Transaction
 {
-    private float $amount;
-    public function __construct(float $amount)
+    private $customer;
+    private $amount;
+    /**
+     *  description
+     *
+     * @program Customer $custumer
+     * @program float $amount
+     *
+     * @throw \RuntimeException
+     * @throw \InvalidArgumentException
+     *
+     * @return bool
+     */
+    public function process(Customer $customer, float $amount): bool
     {
-        $this->amount =  $amount;
-    }
+        // process transaction
 
-    public function getAmount():float
-    {
-        return $this->amount ;
-    }
-    public function setAmount(float $amount): void
-    {
-        $this->amount = $amount;
-    }
-    public function process()
-    {
-        echo 'Processing $' . $this->amount . ' transaction';
+        // if failed, return true
+
+        // otherwise return true
+        return true;
     }
 }
