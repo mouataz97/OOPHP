@@ -10,6 +10,8 @@ use App\Customer;
 $invoice = new Invoice(new Customer());
 try{
     $invoice->process(25);
-} catch (\App\Exception\MissingBillingInfoException|\InvalidArgumentException $e){
+} catch (\Exception $e){
     echo $e->getMessage() . PHP_EOL;
+} finally {
+    echo "Finally block". PHP_EOL;
 }
