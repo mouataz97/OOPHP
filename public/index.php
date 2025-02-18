@@ -7,28 +7,12 @@ use App\Customer;
 
 # Exceptions: Try-Catch || OOP Error Handling
 
-function foo(){
-    echo 'foo' . PHP_EOL;
-    return false;
-}
+set_exception_handler(function(\Exception $e){
+    var_dump($e->getMessage());
+});
 
+array_rand([],1);
 
-var_dump(process());
-function process()
-{
-    $invoice = new Invoice(new Customer(['foo','bar']));
-    try{
-        $invoice->process(-25);
+$invoice = new Invoice(new Customer());
 
-        return true;
-    } catch (\Exception $e){
-        echo $e->getMessage() . PHP_EOL;
-
-        return foo();
-    } finally {
-        echo "Finally block". PHP_EOL;
-
-        return -1;
-    }
-
-}
+$invoice->process(25);
