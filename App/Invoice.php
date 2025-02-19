@@ -2,6 +2,7 @@
 
 namespace App;
 use App\Exception;
+use App\Exception\InvoiceException;
 use http\Exception\InvalidArgumentException;
 
 class Invoice
@@ -13,10 +14,10 @@ class Invoice
     public function process(float $amount): void
     {
         if($amount <= 0) {
-            throw new InvalidArgumentException(' Invalid invoice amount');
+            throw InvoiceException::invalidAmount();
         }
         if(empty($this->customer->getbillingInfo())){
-            throw new Exception\MissingBillingInfoException();
+            throw InvoiceException::missingBillingInfo();
         }
         echo 'Processing $' . $amount . ' invoice -';
         sleep(1);
