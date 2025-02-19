@@ -1,12 +1,8 @@
 <?php
 
 require __DIR__ . '/../vendor/autoload.php';  // Composer autoload
+// DateTime Object
 
-use \App\Invoice;
-use App\Customer;
+$dateTime = new DateTime();
 
-# Exceptions: Try-Catch || OOP Error Handling
-
-$invoice = new Invoice(new Customer());
-
-$invoice->process(-25);
+var_dump($dateTime);
