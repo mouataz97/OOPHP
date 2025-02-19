@@ -11,7 +11,11 @@ set_exception_handler(function(\Exception $e){
     var_dump($e->getMessage());
 });
 
-array_rand([],1);
+try{
+    array_rand([],1);
+}catch (\ValueError $e){
+    echo $e->getMessage() . PHP_EOL;
+}
 
 $invoice = new Invoice(new Customer());
 
