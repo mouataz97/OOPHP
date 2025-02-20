@@ -8,4 +8,5 @@ $dateTime = new DateTime('Now');
 echo $dateTime->getTimezone()->getName() . ' ' . $dateTime->format('m/d/y g:i A').PHP_EOL;
 
 $dateTime->setTimezone(new DateTimeZone('Europe/Amsterdam'));
+$dateTime->se0tDate(2021,3, 14)->setTime(16, 56);
 echo $dateTime->getTimezone()->getName() . ' ' . $dateTime->format('m/d/y g:i A').PHP_EOL;
