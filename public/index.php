@@ -4,7 +4,8 @@ require __DIR__ . '/../vendor/autoload.php';  // Composer autoload
 // DateTime Object
 # https://www.php.net/manual/en/book.datetime.php
 
-$date = new DateTime('15/05/2015 19:20PM');
-$dateTime = new DateTime(str_replace('/', '-', $date));
+$date = '20/2/2025';
 
-var_dump($dateTime);
+$dateTime = DateTime::createFromFormat('d/m/y g:iA', $date)->setTime(0, 0);
+
+var_dump($dateTime, new DateTime('20/2/2025'));
