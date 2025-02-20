@@ -4,8 +4,11 @@ require __DIR__ . '/../vendor/autoload.php';  // Composer autoload
 // DateTime Object
 # https://www.php.net/manual/en/book.datetime.php
 
-$date = '20/2/2025';
+$date1 = new DateTime('05/05/2015 9:15PM');
+$date2 = new DateTime('05/05/2015 9:15AM');
 
-$dateTime = DateTime::createFromFormat('d/m/y g:iA', $date)->setTime(0, 0);
+var_dump($date1 < $date2);
+var_dump($date1 > $date2);
+var_dump($date1 === $date2);
+var_dump($date1 <=> $date2);
 
-var_dump($dateTime, new DateTime('20/2/2025'));
