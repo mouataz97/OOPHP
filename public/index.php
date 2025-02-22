@@ -2,6 +2,7 @@
 
 require __DIR__ . '/../vendor/autoload.php';  // Composer autoload
 // Iterators & Iterable Type
+#https://www.php.net/manual/en/reserved.interfaces.php
 
 use App\Invoice;
 use App\InvoiceCollection;

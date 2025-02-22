@@ -1,7 +1,9 @@
 <?php
 
 namespace App;
-class InvoiceCollection implements \Iterator
+use Traversable;
+
+class InvoiceCollection implements \IteratorAggregate
 {
 
     /**
@@ -13,33 +15,8 @@ class InvoiceCollection implements \Iterator
     {
     }
 
-    public function current(): mixed
+    public function getIterator(): Traversable
     {
-        echo __METHOD__ . PHP_EOL;
-        return $this->invoices[$this->key];
-    }
-
-    public function next(): void
-    {
-        echo __METHOD__ . PHP_EOL;
-        ++$this->key;
-    }
-
-    public function key()
-    {
-        echo __METHOD__ . PHP_EOL;
-        return $this->key;
-    }
-
-    public function valid():bool
-    {
-        echo __METHOD__ . PHP_EOL;
-        return isset($this->invoices[$this->key]);
-    }
-
-    public function rewind(): void
-    {
-        echo __METHOD__ . PHP_EOL;
-        $this->key = 0;
+        // TODO: Implement getIterator() method.
     }
 }
