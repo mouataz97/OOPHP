@@ -4,6 +4,7 @@ require __DIR__ . '/../vendor/autoload.php';  // Composer autoload
 // Iterators & Iterable Type
 
 use App\Invoice;
+use App\InvoiceCollection;
 
 foreach (new Invoice(35) as $key => $value) {
     echo $key . ' = ' . $value . PHP_EOL;
