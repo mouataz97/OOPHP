@@ -7,20 +7,10 @@ use http\Exception\InvalidArgumentException;
 
 class Invoice
 {
-    public function __construct(public Customer $customer)
+    public string $id;
+    public function __construct(public float $amount)
     {
+        $this->id = random_int(10000, 9999999);
     }
 
-    public function process(float $amount): void
-    {
-        if($amount <= 0) {
-            throw InvoiceException::invalidAmount();
-        }
-        if(empty($this->customer->getbillingInfo())){
-            throw InvoiceException::missingBillingInfo();
-        }
-        echo 'Processing $' . $amount . ' invoice -';
-        sleep(1);
-        echo 'OK'. PHP_EOL;
-    }
 }
