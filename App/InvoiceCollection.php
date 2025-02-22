@@ -17,6 +17,6 @@ class InvoiceCollection implements \IteratorAggregate
 
     public function getIterator(): Traversable
     {
-        // TODO: Implement getIterator() method.
+        return new \ArrayIterator($this->invoices);
     }
 }
