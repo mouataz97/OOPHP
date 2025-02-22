@@ -1,9 +1,6 @@
 <?php
 
 namespace App;
-use App\Exception;
-use App\Exception\InvoiceException;
-use http\Exception\InvalidArgumentException;
 
 class Invoice
 {
