@@ -8,13 +8,13 @@ use App\Exception\RouteNotFoundException;
 class Router
 {
     private array $routes;
-    public function register(string $route, callable $action)
+    public function register(string $route, callable|array $action): self
     {
         $this->routes[$route] = $action;
         return $this;
     }
 
-    public function resolve($requestURI)
+    public function resolve($requestURI): mixed
     {
         $route = explode('?', $requestURI)[0];
         $action = $this->routes[$route] ?? null;
