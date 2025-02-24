@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App;
 use App\Exception\RouteNotFoundException;
 
-class Router 
+class Router
 {
     private array $routes;
     public function register(string $route, callable $action)
@@ -14,13 +14,15 @@ class Router
         return $this;
     }
 
-    public function resolve(string $requestURL)
+    public function resolve($requestURI)
     {
-        $route = explode('?', $requestURL)[0];
+        $route = explode('?', $requestURI)[0];
         $action = $this->routes[$route] ?? null;
 
         if(! $action){
             throw new RouteNotFoundException();
         }
+
+        return call_user_func($action);
     }
 }

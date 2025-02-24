@@ -1,11 +1,12 @@
 <?php
 
 require __DIR__ . '/../vendor/autoload.php';  // Composer autoload
-// Superglobals - Basic Routing Using The Server Info 
+use App\Exception\RouteNotFoundException;
 
 echo '<pre>';
-print_r($_SERVER);
-echo '<pre>';
+// Uncomment for debugging
+// print_r($_SERVER);
+echo '</pre>';
 
 $router = new App\Router();
 
@@ -19,8 +20,17 @@ $router->register(
 $router->register(
     '/invoice',
     function () {
-    echo 'Invoices';
+        echo 'Invoices';
     }
 );
 
-echo $router->resolve($_SERVER['REQUEST_URL']);
+// Check if REQUEST_URI exists to avoid error in CLI or other non-web contexts
+$requestURI = $_SERVER['REQUEST_URI'] ?? '/';  // Default to '/' if REQUEST_URI is not set
+
+try {
+    echo $router->resolve($requestURI);
+} catch (RouteNotFoundException $e) {
+    // Handle 404 errors here
+    echo $e->getMessage(); // You can also redirect to a custom 404 page
+}
+?>
