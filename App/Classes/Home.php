@@ -4,8 +4,12 @@ namespace App\Classes;
 
 class Home
 {
-    public static function index(): string
+    public function index(): string
     {
+        echo '<pre>';
+        var_dump($_REQUEST);
+        echo '<pre>';
+
         echo '<pre>';
         var_dump($_GET);
         echo '<pre>';

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Classes;
 use App\Exception\RouteNotFoundException;
 
 class Router

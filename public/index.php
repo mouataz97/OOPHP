@@ -3,7 +3,7 @@
 require __DIR__ . '/../vendor/autoload.php';  // Composer autoload
 # Get & Post Superglobals
 
-$router = new App\Router();
+$router = new \App\Classes\Router();
 
 $router
     ->register('/', [App\Classes\Home::class, 'index'])
