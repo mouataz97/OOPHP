@@ -1,12 +1,14 @@
 <?php
 
 require __DIR__ . '/../vendor/autoload.php';  // Composer autoload
-// DateTime Object
-# https://www.php.net/manual/en/book.datetime.php
+# Get & Post Superglobals
 
-$dateTime = new DateTime('Now');
-echo $dateTime->getTimezone()->getName() . ' ' . $dateTime->format('m/d/y g:i A').PHP_EOL;
+$router = new \App\Classes\Router();
 
-$dateTime->setTimezone(new DateTimeZone('Europe/Amsterdam'));
-$dateTime->se0tDate(2021,3, 14)->setTime(16, 56);
-echo $dateTime->getTimezone()->getName() . ' ' . $dateTime->format('m/d/y g:i A').PHP_EOL;
+$router
+    ->register('/', [App\Classes\Home::class, 'index'])
+    ->register('/invoices', [App\Classes\Invoice::class, 'index'])
+    ->register('/invoices/create', [App\Classes\Invoice::class, 'create']);
+
+// Check if REQUEST_URI exists to avoid error in CLI or other non-web contexts
+$requestURI = $_SERVER['REQUEST_URI'] ?? '/';  // Default to '/' if REQUEST_URI is not set
