@@ -13,7 +13,7 @@ $router
     ->get('/', [Home::class, 'index'])
     ->get('/invoices', [Invoice::class, 'index'])
     ->get('/invoices/create', [Invoice::class, 'create'])
-    ->post('/invoices/create', [Invoice::class, 'create']);
+    ->post('/invoices/create', [Invoice::class, 'store']);
 
 
-echo $router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+echo $router->resolve($_SERVER['REQUEST_URI'], strtolower($_SERVER['REQUEST_METHOD']));
