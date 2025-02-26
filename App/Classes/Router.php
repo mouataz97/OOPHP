@@ -19,7 +19,7 @@ class Router
         return $this->register('get', $route, $action);
     }
 
-    public function posix_times(string $route, callable|array $action): self
+    public function post(string $route, callable|array $action): self
     {
         return $this->register('post', $route, $action);
     }
