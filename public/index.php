@@ -16,3 +16,5 @@ echo $router->resolve(
     $_SERVER['REQUEST_URI'],
     strtolower($_SERVER['REQUEST_METHOD'])
 );
+
+var_dump($_SESSION);
