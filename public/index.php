@@ -12,9 +12,9 @@ $router
     ->post('/invoices/create', [App\Classes\Invoice::class, 'store']);
 
 
-echo $router->resolve(
-    $_SERVER['REQUEST_URI'],
-    strtolower($_SERVER['REQUEST_METHOD'])
-);
+$requestURI = $_SERVER['REQUEST_URI'] ?? '/'; // Default to '/' if not available
+$requestMethod = strtolower($_SERVER['REQUEST_METHOD'] ?? 'get'); // Default to 'get'
+
+echo $router->resolve($requestURI, $requestMethod);
 
 var_dump($_SESSION);
