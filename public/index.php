@@ -17,4 +17,4 @@ $requestMethod = strtolower($_SERVER['REQUEST_METHOD'] ?? 'get'); // Default to 
 
 echo $router->resolve($requestURI, $requestMethod);
 
-var_dump($_SESSION);
+var_dump($_COOKIE);

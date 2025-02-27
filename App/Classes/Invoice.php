@@ -6,7 +6,13 @@ class Invoice
 {
 public function index(): string
 {
-return 'Invoice';
+    setcookie(
+        'userName',
+        'Mouataz',
+        time() - 12
+    );
+
+    return 'Invoice';
 }
 
 public function create(): string
