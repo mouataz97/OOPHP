@@ -1,12 +1,20 @@
 <?php
 
 require __DIR__ . '/../vendor/autoload.php';  // Composer autoload
-// DateTime Object
-# https://www.php.net/manual/en/book.datetime.php
+# Sessions & Cookies - Output Buffering
 
-$dateTime = new DateTime('Now');
-echo $dateTime->getTimezone()->getName() . ' ' . $dateTime->format('m/d/y g:i A').PHP_EOL;
+$router = new \App\Classes\Router();
+session_start();
+$router
+    ->get('/', [App\Classes\Home::class, 'index'])
+    ->get('/invoices', [App\Classes\Invoice::class, 'index'])
+    ->get('/invoices/create', [App\Classes\Invoice::class, 'create'])
+    ->post('/invoices/create', [App\Classes\Invoice::class, 'store']);
 
-$dateTime->setTimezone(new DateTimeZone('Europe/Amsterdam'));
-$dateTime->se0tDate(2021,3, 14)->setTime(16, 56);
-echo $dateTime->getTimezone()->getName() . ' ' . $dateTime->format('m/d/y g:i A').PHP_EOL;
+
+$requestURI = $_SERVER['REQUEST_URI'] ?? '/'; // Default to '/' if not available
+$requestMethod = strtolower($_SERVER['REQUEST_METHOD'] ?? 'get'); // Default to 'get'
+
+echo $router->resolve($requestURI, $requestMethod);
+
+var_dump($_SESSION);
