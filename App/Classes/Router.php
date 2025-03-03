@@ -8,7 +8,8 @@ use App\Exception\RouteNotFoundException;
 class Router
 {
     private array $routes;
-    public function register(string $requestMethod,string $route, callable|array $action): self
+
+    public function register(string $requestMethod, string $route, callable|array $action): self
     {
         $this->routes[$requestMethod][$route] = $action;
         return $this;
@@ -17,11 +18,6 @@ class Router
     public function get(string $route, callable|array $action): self
     {
         return $this->register('get', $route, $action);
-    }
-
-    public function posix_times(string $route, callable|array $action): self
-    {
-        return $this->register('post', $route, $action);
     }
 
     public function post(string $route, callable|array $action): self
@@ -34,12 +30,21 @@ class Router
         return $this->routes;
     }
 
-    public function resolve(string $requestURI, string $requestMethod): mixed
+    public function resolve(string $requestURI = null, string $requestMethod = null): mixed
     {
+        // Fallback for CLI or testing purposes
+        if ($requestURI === null) {
+            $requestURI = '/'; // Default route if not available
+        }
+
+        if ($requestMethod === null) {
+            $requestMethod = 'get'; // Default to GET if not available
+        }
+
         $route = explode('?', $requestURI)[0];
         $action = $this->routes[$requestMethod][$route] ?? null;
 
-        if(! $action){
+        if (!$action) {
             throw new RouteNotFoundException();
         }
 

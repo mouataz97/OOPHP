@@ -18,6 +18,8 @@ class Home
     {
         echo '<pre>';
         var_dump($_FILES);
+
+        var_dump(pathinfo($_FILES['receipt']['tmp_name']));
         echo '</pre>';
     }
 }
