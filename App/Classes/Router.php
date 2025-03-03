@@ -41,7 +41,7 @@ class Router
             $requestMethod = 'get'; // Default to GET if not available
         }
 
-        $route = explode('?', $requestURI)[0];
+        $route = trim(explode('?', $requestURI)[0], '/');
         $action = $this->routes[$requestMethod][$route] ?? null;
 
         if (!$action) {
