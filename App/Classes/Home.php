@@ -6,18 +6,18 @@ class Home
 {
     public function index(): string
     {
-        echo '<pre>';
-        var_dump($_REQUEST);
-        echo '<pre>';
+        return <<<FORM
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="receipt" />
+            <button type="submit">upload</button>
+        </form>
+        FORM;  
+    }
 
+    public function upload()
+    {
         echo '<pre>';
-        var_dump($_GET);
-        echo '<pre>';
-
-        echo '<pre>';
-        var_dump($_POST);
-        echo '<pre>';
-
-        return '<form action="/foo=bar&amount=149" method="post"><label>Amount<input type="text"></label></form>';
+        var_dump($_FILES);
+        echo '</pre>';
     }
 }
