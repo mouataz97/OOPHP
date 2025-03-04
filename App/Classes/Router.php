@@ -30,6 +30,9 @@ class Router
         return $this->routes;
     }
 
+    /**
+     * @throws RouteNotFoundException
+     */
     public function resolve(string $requestURI = null, string $requestMethod = null): mixed
     {
         // Fallback for CLI or testing purposes
