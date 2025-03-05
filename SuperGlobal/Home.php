@@ -1,13 +1,18 @@
 <?php
-
+declare(strict_types=1);
 class Home
 {
     public function index(): string
     {
         // Output the GET and POST data for debugging purposes
         echo '<pre>';
+        var_dump($_REQUEST);
+        echo '</pre>';
+
+        echo '<pre>';
         var_dump($_GET);
         echo '</pre>';
+
         echo '<pre>';
         var_dump($_POST);
         echo '</pre>';
