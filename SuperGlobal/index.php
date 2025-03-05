@@ -4,12 +4,11 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $router = new Router();
 
-$router->register('/', [Home::class, 'index'])
-    ->register('/Invoices', [Invoice::class, 'index'])
-    ->register('/Invoices/create', [Invoice::class, 'create'])
-    ->register('/invoices', function () {
-        echo 'Invoices';
-    });
+$router
+    ->get('/', [Home::class, 'index'])
+    ->get('/Invoices', [Invoice::class, 'index'])
+    ->get('/Invoices/create', [Invoice::class, 'create'])
+    ->post('/Invoices/create', [Invoice::class, 'create']);
 
 try {
     // Resolving the route based on the current request URI
