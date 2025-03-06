@@ -7,6 +7,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['todo'])) {
     file_put_contents(STORAGE, $_POST['todo'], FILE_APPEND);
 }
 
+$todos = file_get_contents(STORAGE);
+$todos = explode(PHP_EOL, $todos);
+
 ?>
 <html lang="en">
 <head>
@@ -21,22 +24,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['todo'])) {
         <button type="submit">Add</button>
     </form>
     <div>
-        <?php
-    function renderTodos(array $todos): void
-    {
+    <?php
         echo "<ul>";
         foreach ($todos as $key => $todo) {
             echo "<li style='margin-top: 10px'>";
             echo '<form action="index.php" method="POST">';
-            echo '<input type="hidden" name="delete" value="' . $key . '">';
+            echo '<input type="hidden" name="delete" value="'. $key .'">';
             echo '<button type="submit"> X </button>';
             echo " $todo";
             echo "</form>";
             echo "</li>";
         }
         echo "</ul>";
-    }
-?>
+        ?>
     </div>
 </body>
 </html>
