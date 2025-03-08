@@ -2,13 +2,28 @@
 <?php
 define('STORAGE', __DIR__ . '/storage.txt');
 
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['todo'])) {
-    file_put_contents(STORAGE, PHP_EOL, FILE_APPEND);
-    file_put_contents(STORAGE, $_POST['todo'], FILE_APPEND);
-}
-
 $todos = file_get_contents(STORAGE);
 $todos = explode(PHP_EOL, $todos);
+$todos = array_filter($todos);
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['todo'])) {
+    $newTodo = $_POST['todo'];
+    file_put_contents(STORAGE, PHP_EOL . $newTodo, FILE_APPEND);
+}
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['DELETE'])) {
+    $key = (int)$_POST['key'];
+    unset($todos[$key]);
+    file_put_contents(STORAGE, implode(PHP_EOL, $todos));
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['edit'])) {
+    $key = (int)$_POST['key'];
+    if (isset($_POST['todo'])) {
+        $newTodo = $_POST['todo'];
+        $todos[$key] = $newTodo;
+        file_put_contents(STORAGE, implode(PHP_EOL, $todos));
+    }
+}
 
 ?>
 <html lang="en">
@@ -18,25 +33,45 @@ $todos = explode(PHP_EOL, $todos);
     <title>Document</title>
 </head>
 <body>
-    <form action="index.php" method="POST">
-        <label for="">insert a message</label>
-        <input type="text" name="todo">
-        <button type="submit">Add</button>
-    </form>
-    <div>
-    <?php
-        echo "<ul>";
-        foreach ($todos as $key => $todo) {
-            echo "<li style='margin-top: 10px'>";
-            echo '<form action="index.php" method="POST">';
-            echo '<input type="hidden" name="delete" value="'. $key .'">';
-            echo '<button type="submit"> X </button>';
-            echo " $todo";
-            echo "</form>";
-            echo "</li>";
-        }
-        echo "</ul>";
-        ?>
-    </div>
+<form action="index.php" method="POST">
+    <label for="todo">Insert a message:</label>
+    <input type="text" name="todo" id="todo" required>
+    <button type="submit">Add</button>
+</form>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Remove</th>
+            <th>Update</th>
+            <th>Todo List</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($todos as $key => $todo): ?>
+            <tr>
+                <td>
+                    <!-- Delete Button -->
+                    <form action="index.php" method="POST">
+                        <input type="hidden" name="DELETE" value="delete">
+                        <input type="hidden" name="key" value="<?= $key ?>">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <!-- Edit Button (Optional) -->
+                    <form action="index.php" method="POST">
+                        <input type="hidden" name="edit" value="edit">
+                        <input type="hidden" name="key" value="<?= $key ?>">
+                        <button type="submit">Edit</button>
+                    </form>
+                </td>
+                <td><?= htmlspecialchars($todo) ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
