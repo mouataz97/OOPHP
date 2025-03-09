@@ -61,11 +61,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['edit'])) {
                 </td>
                 <td>
                     <!-- Edit Button (Optional) -->
-                    <form action="index.php" method="POST">
-                        <input type="hidden" name="edit" value="edit">
-                        <input type="hidden" name="key" value="<?= $key ?>">
-                        <button type="submit">Edit</button>
-                    </form>
+                    <?php if (isset($_POST['edit']) && $_POST['key'] == $key): ?>
+                        <form action="index.php" method="POST">
+                            <input type="hidden" name="key" value="<?= $key ?>">
+                            <input type="text" name="todo" value="<?= htmlspecialchars($todo) ?>" required>
+                            <button type="submit">Save</button>
+                        </form>
+                    <?php endif; ?>
                 </td>
                 <td><?= htmlspecialchars($todo) ?></td>
             </tr>
