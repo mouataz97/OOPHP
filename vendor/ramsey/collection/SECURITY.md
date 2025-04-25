@@ -83,7 +83,7 @@ with or unaddressed by this policy.
 
         This section is a living document that sets expectations for preferences
         and priorities, typically maintained by the support and engineering
-        team. This can outline classes of vulnerabilities, reporting style
+        team. This can outline Controllers of vulnerabilities, reporting style
         (crash dumps, CVSS scoring, proof-of-concept, etc.), tools, etc. Too
         many preferences can set the wrong tone or make reporting findings
         difficult to navigate. This section also sets expectations to the

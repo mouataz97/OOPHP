@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Classes;
+namespace App\Controllers;
 
-class Home
+class HomeController
 {
     public function index(): string
     {

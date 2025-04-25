@@ -110,7 +110,7 @@ interface QueueInterface extends ArrayInterface
      * Queues that support this operation may place limitations on what elements
      * may be added to this queue. In particular, some queues will refuse to add
      * `null` elements, and others will impose restrictions on the type of
-     * elements that may be added. Queue classes should clearly specify in their
+     * elements that may be added. Queue Controllers should clearly specify in their
      * documentation any restrictions on what elements may be added.
      *
      * If a queue refuses to add a particular element for any reason other than

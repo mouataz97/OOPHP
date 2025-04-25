@@ -43,7 +43,7 @@ interface CollectionInterface extends ArrayInterface
      * elements may be added to this collection. In particular, some
      * collections will refuse to add `null` elements, and others will impose
      * restrictions on the type of elements that may be added. Collection
-     * classes should clearly specify in their documentation any restrictions
+     * Controllers should clearly specify in their documentation any restrictions
      * on what elements may be added.
      *
      * If a collection refuses to add a particular element for any reason other

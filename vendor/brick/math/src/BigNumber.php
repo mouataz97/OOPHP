@@ -161,7 +161,7 @@ abstract class BigNumber implements \JsonSerializable
     }
 
     /**
-     * Overridden by subclasses to convert a BigNumber to an instance of the subclass.
+     * Overridden by subControllers to convert a BigNumber to an instance of the subclass.
      *
      * @throws MathException If the value cannot be converted.
      *
@@ -170,7 +170,7 @@ abstract class BigNumber implements \JsonSerializable
     abstract protected static function from(BigNumber $number): static;
 
     /**
-     * Proxy method to access BigInteger's protected constructor from sibling classes.
+     * Proxy method to access BigInteger's protected constructor from sibling Controllers.
      *
      * @internal
      * @psalm-pure
@@ -181,7 +181,7 @@ abstract class BigNumber implements \JsonSerializable
     }
 
     /**
-     * Proxy method to access BigDecimal's protected constructor from sibling classes.
+     * Proxy method to access BigDecimal's protected constructor from sibling Controllers.
      *
      * @internal
      * @psalm-pure
@@ -192,7 +192,7 @@ abstract class BigNumber implements \JsonSerializable
     }
 
     /**
-     * Proxy method to access BigRational's protected constructor from sibling classes.
+     * Proxy method to access BigRational's protected constructor from sibling Controllers.
      *
      * @internal
      * @psalm-pure
@@ -295,7 +295,7 @@ abstract class BigNumber implements \JsonSerializable
      * Adds two BigNumber instances in the correct order to avoid a RoundingNecessaryException.
      *
      * @todo This could be better resolved by creating an abstract protected method in BigNumber, and leaving to
-     *       concrete classes the responsibility to perform the addition themselves or delegate it to the given number,
+     *       concrete Controllers the responsibility to perform the addition themselves or delegate it to the given number,
      *       depending on their ability to perform the operation. This will also require a version bump because we're
      *       potentially breaking custom BigNumber implementations (if any...)
      *

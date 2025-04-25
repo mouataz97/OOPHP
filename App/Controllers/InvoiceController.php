@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Classes;
+namespace App\Controllers;
 
-class Invoice
+class InvoiceController
 {
 public function index(): string
 {

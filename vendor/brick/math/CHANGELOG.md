@@ -14,8 +14,8 @@ All notable changes to this project will be documented in this file.
 
 - Minimum PHP version is now 8.1
 - `RoundingMode` is now an `enum`; if you're type-hinting rounding modes, you need to type-hint against `RoundingMode` instead of `int` now
-- `BigNumber` classes do not implement the `Serializable` interface anymore (they use the [new custom object serialization mechanism](https://wiki.php.net/rfc/custom_object_serialization))
-- The following breaking changes only affect you if you're creating your own `BigNumber` subclasses:
+- `BigNumber` Controllers do not implement the `Serializable` interface anymore (they use the [new custom object serialization mechanism](https://wiki.php.net/rfc/custom_object_serialization))
+- The following breaking changes only affect you if you're creating your own `BigNumber` subControllers:
   - the return type of `BigNumber::of()` is now `static`
   - `BigNumber` has a new abstract method `from()`
   - all `public` and `protected` functions of `BigNumber` are now `final`
@@ -138,7 +138,7 @@ first.</sup>
 
 🛠️ **Maintenance release**
 
-Classes are now annotated for better static analysis with [psalm](https://psalm.dev/).
+Controllers are now annotated for better static analysis with [psalm](https://psalm.dev/).
 
 This is a maintenance release: no bug fixes, no new features, no breaking changes.
 
@@ -293,7 +293,7 @@ Methods renamed:
 - `BigRational::numerator()` has been renamed to `getNumerator()`
 - `BigRational::denominator()` has been renamed to `getDenominator()`
 
-Classes renamed:
+Controllers renamed:
 
 - `ArithmeticException` has been renamed to `MathException`
 
@@ -324,7 +324,7 @@ The old methods will be removed in version 0.7.0.
 
 ## [0.5.4](https://github.com/brick/math/releases/tag/0.5.4) - 2016-10-17
 
-`BigNumber` classes now implement [JsonSerializable](http://php.net/manual/en/class.jsonserializable.php).
+`BigNumber` Controllers now implement [JsonSerializable](http://php.net/manual/en/class.jsonserializable.php).
 The JSON output is always a string.
 
 ## [0.5.3](https://github.com/brick/math/releases/tag/0.5.3) - 2016-03-31
@@ -344,7 +344,7 @@ This allows to convert any `BigNumber` to a `BigDecimal` with a given scale, usi
 ## [0.5.0](https://github.com/brick/math/releases/tag/0.5.0) - 2015-07-04
 
 **New features**
-- Common `BigNumber` interface for all classes, with the following methods:
+- Common `BigNumber` interface for all Controllers, with the following methods:
   - `sign()` and derived methods (`isZero()`, `isPositive()`, ...)
   - `compareTo()` and derived methods (`isEqualTo()`, `isGreaterThan()`, ...) that work across different `BigNumber` types
   - `toBigInteger()`, `toBigDecimal()`, `toBigRational`() conversion methods
@@ -353,7 +353,7 @@ This allows to convert any `BigNumber` to a `BigDecimal` with a given scale, usi
 - New method: `BigDecimal::exactlyDividedBy()`; this method automatically computes the scale of the result, provided that the division yields a finite number of digits
 - New methods: `BigRational::quotient()` and `remainder()`
 - Fine-grained exceptions: `DivisionByZeroException`, `RoundingNecessaryException`, `NumberFormatException`
-- Factory methods `zero()`, `one()` and `ten()` available in all classes
+- Factory methods `zero()`, `one()` and `ten()` available in all Controllers
 - Rounding mode reintroduced in `BigInteger::dividedBy()`
 
 This release also comes with many performance improvements.
@@ -440,7 +440,7 @@ The `$roundingMode` and `$scale` parameters have been swapped in `BigDecimal::di
 
 Stronger immutability guarantee for `BigInteger` and `BigDecimal`.
 
-So far, it would have been possible to break immutability of these classes by calling the `unserialize()` internal function. This release fixes that.
+So far, it would have been possible to break immutability of these Controllers by calling the `unserialize()` internal function. This release fixes that.
 
 ## [0.2.1](https://github.com/brick/math/releases/tag/0.2.1) - 2015-06-02
 

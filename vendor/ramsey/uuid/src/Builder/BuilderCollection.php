@@ -64,7 +64,7 @@ class BuilderCollection extends AbstractCollection
     {
         /** @var array<array-key, UuidBuilderInterface> $data */
         $data = unserialize($serialized, [
-            'allowed_classes' => [
+            'allowed_Controllers' => [
                 BrickMathCalculator::class,
                 GenericNumberConverter::class,
                 GenericTimeConverter::class,
