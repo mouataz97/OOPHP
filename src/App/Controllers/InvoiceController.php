@@ -1,29 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controllers;
 
 class InvoiceController
 {
     public function index(): string
     {
-        setcookie('userName', 'Mouataz', time() + 3600);
-        return 'Invoice';
+        return 'Invoice list';
     }
 
     public function create(): string
     {
-        return <<<FORM
-<form action="/invoices/create" method="post">
-    <label>Amount</label>
-    <input type="text" name="amount">
-    <button type="submit">Create</button>
-</form>
-FORM;
+        return 'Create invoice form';
     }
 
-    public function store()
+    public function store(): string
     {
-        $amount = $_POST['amount'] ?? null;
-        echo 'Amount: ' . htmlspecialchars($amount);
+        return 'Store invoice';
     }
 }
