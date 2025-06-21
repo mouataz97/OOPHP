@@ -26,9 +26,9 @@ class HomeController
 
             $stmt->bindValue(':name', $name);
             $stmt->bindValue(':email', $email);
-            $stmt->bindValue(':active', $is_active, \PDO::PARAM_BOOL);
+            $stmt->bindParam(':active', $is_active, \PDO::PARAM_BOOL);
             $stmt->bindValue(':date', $createAT);
-
+            $is_active = 0; // Example of changing the value before execution
             $stmt->execute();
 
             $id = (int) $db->lastInsertId();
