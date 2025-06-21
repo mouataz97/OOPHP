@@ -15,8 +15,8 @@ class HomeController
                 \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ
             ]);
 
-            $email = 'jhone@doe.com';
-            $name = 'Jhon Doe';
+            $email = 'jhones@doe.com';
+            $name = 'Jhones Doe';
             $is_active = 1;
             $createAT = date('Y-m-d H:i:s', strtotime('06/21/2025 2:12 PM'));
             $query = 'INSERT INTO users (email, full_name, is_active, created_at) 
