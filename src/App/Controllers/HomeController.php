@@ -19,14 +19,19 @@ class HomeController
             $name = 'Jhon Doe';
             $is_active = 1;
             $createAT = date('Y-m-d H:i:s', strtotime('06/21/2025 2:12 PM'));
-
             $query = 'INSERT INTO users (email, full_name, is_active, created_at) 
-                      VALUES (?, ?, ?, ?)';
+                      VALUES (:email, :name, :active, :date)';
 
             $stmt = $db->prepare($query);
-            $stmt->execute([$email, $name, $is_active, $createAT]);
 
-            $id = $db->lastInsertId();
+            $stmt->bindValue(':name', $name);
+            $stmt->bindValue(':email', $email);
+            $stmt->bindValue(':active', $is_active, \PDO::PARAM_BOOL);
+            $stmt->bindValue(':date', $createAT);
+
+            $stmt->execute();
+
+            $id = (int) $db->lastInsertId();
             $user = $db->query("SELECT * FROM users WHERE id = $id")->fetch();
 
             echo '<pre>' ;
@@ -34,6 +39,7 @@ class HomeController
             echo '</pre>';
             
         }catch(\PDOException $e){
+            var_dump($e->getCode())
             throw new \PDOException($e->getMessage(), $e->getCode());
         }
 
