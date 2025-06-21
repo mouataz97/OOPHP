@@ -1,11 +1,16 @@
 # Use the official PHP image with Apache
-FROM php:8.1-apache
+FROM php:8.2-apache
 
-# Install PHP extensions
-RUN docker-php-ext-install pdo pdo_mysql
+# Install system dependencies and PHP extensions, then clean up
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    vim \
+    zip \
+    unzip \
+    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Copy PHP files into the container's web directory
-COPY . /var/www/html/
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Expose port 80 to make the app accessible in the browser
-EXPOSE 80
