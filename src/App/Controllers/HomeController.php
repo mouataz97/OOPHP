@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\View;
-use \PDO;
+use PDO;
 
 class HomeController
 {
     public function index(): View
     {
+        var_dump($_ENV['DB_HOST']);
         try{
             $db = new PDO('mysql:host=my_db;dbname=my_db', 'root', 'root', [
                 \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ

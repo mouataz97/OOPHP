@@ -1,42 +1,38 @@
 <?php
 
-declare(strict_types=1);
+require_once __DIR__ . '/../vendor/autoload.php';
 
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
+use App\View;
+use App\Router;
 
-require __DIR__ . '/../vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
-use App\Controllers\Router;
-use App\Controllers\HomeController;
-use App\Controllers\InvoiceController;
-use App\Exception\RouteNotFoundException;
+define('storage_path', __DIR__ . '/../storage');
+define('views_path', __DIR__ . '/../views');
 
-var_dump(class_exists('App\Controllers\Router')); // Should return true
-var_dump(class_exists('App\Controllers\HomeController')); // Should return true
-var_dump(class_exists('App\Controllers\InvoiceController')); // Should return true
-
-session_start();
-
+try{
 $router = new Router();
 
 $router
-    ->get('/', [HomeController::class, 'index'])
-    ->post('/upload', [HomeController::class, 'upload'])
-    ->get('/invoices', [InvoiceController::class, 'index'])
-    ->get('/invoices/create', [InvoiceController::class, 'create'])
-    ->post('/invoices/create', [InvoiceController::class, 'store']);
+    ->get('/', [App\Controllers\HomeController::class, 'index'])
+    ->get('/download', [App\Controllers\HomeController::class, 'download'])
+    ->post('/upload', [App\Controllers\HomeController::class, 'upload'])
+    ->get('/invoices', [App\Controllers\InvoiceController::class, 'index'])
+    ->get('/invoices/create', [App\Controllers\InvoiceController::class, 'create'])
+    ->post('/invoices/create', [App\Controllers\InvoiceController::class, 'store']);
 
-try {
+
     echo $router->resolve(
         $_SERVER['REQUEST_URI'],
         strtolower($_SERVER['REQUEST_METHOD'])
     );
+
+
+    ini_set('display_errors', 'On');
+    ini_set('log_errors', 'On');
+    error_reporting(E_ALL);
 } catch (RouteNotFoundException $e) {
     http_response_code(404);
     echo $e->getMessage();
 }
-
-ini_set('display_errors', 'On');
-ini_set('log_errors', 'On');
-error_reporting(E_ALL);
