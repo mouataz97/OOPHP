@@ -3,16 +3,15 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\View;
-use App\Router;
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
 define('storage_path', __DIR__ . '/../storage');
 define('views_path', __DIR__ . '/../views');
 
 try{
-$router = new Router();
+$router = new App\Router();
 
 $router
     ->get('/', [App\Controllers\HomeController::class, 'index'])
