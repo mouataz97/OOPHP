@@ -14,54 +14,53 @@ class HomeController
     {
         $db = App::db();
 
-            $email = 'john@doe.com';
-            $name = 'John Doe';
-            $amount = 25;
+        $email = 'john@doe.com';
+        $name = 'John Doe';
+        $amount = 25;
 
         try {
-        $db->beginTransaction();
-
-            $newUserStmt = $db->prepare(
-                'INSERT INTO users (email, full_name, is_active, Cceated_at) 
-                VALUES (?, ?, 1, NOW())'
-            ); 
-            
-            $newInvoiceStmt = $db->prepare(
-                'INSERT INTO invoices (amount, user_id) 
-                VALUES (?,?)'
-            ); 
-        }catch (\Throwable $e) {
-            if($db->inTransaction()) {
-                // Rollback the transaction if it was started
-            $db->rollBack();
-        }
-
-            $fetchUserStmt = $db->prepare(
-                'SELECT id FROM users WHERE email = ?'
-            );
-
+            // Check if user already exists
+            $fetchUserStmt = $db->prepare('SELECT id FROM users WHERE email = ?');
             $fetchUserStmt->execute([$email]);
             $user = $fetchUserStmt->fetch();
 
             if ($user) {
                 throw new \Exception('User already exists');
-        }
+            }
 
+            $db->beginTransaction();
+
+            $newUserStmt = $db->prepare(
+                'INSERT INTO users (email, full_name, is_active, created_at) VALUES (?, ?, 1, NOW())'
+            );
             $newUserStmt->execute([$email, $name]);
 
             $userId = $db->lastInsertId();
 
+            $newInvoiceStmt = $db->prepare(
+                'INSERT INTO invoices (amount, user_id) VALUES (?, ?)'
+            );
             $newInvoiceStmt->execute([$amount, $userId]);
 
             $db->commit();
 
             $fetchInvoicesStmt = $db->prepare(
-                'SELECT invoices.id as invoice_id, user_id, full_name
-                FROM invoices
-                Inner JOIN users ON users_id = user.id
-                WHERE email = ?'
+                'SELECT invoices.id as invoice_id, invoices.user_id, users.full_name
+                 FROM invoices
+                 INNER JOIN users ON invoices.user_id = users.id
+                 WHERE users.email = ?'
             );
-            
+            $fetchInvoicesStmt->execute([$email]);
+            $invoices = $fetchInvoicesStmt->fetchAll();
 
+            // Return a view (replace with actual view logic)
+            return new View('home', ['invoices' => $invoices]);
+        } catch (\Throwable $e) {
+            if ($db->inTransaction()) {
+                $db->rollBack();
+            }
+            // Handle error (replace with actual error handling)
+            throw $e;
+        }
     }
 }
