@@ -3,7 +3,8 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\App;
-use App\Router;
+ use App\Controllers\Router;
+// use App\Router;
 use App\Controllers\HomeController;
 use App\Controllers\InvoiceController;
 use App\View;
@@ -25,8 +26,11 @@ $router
 
 (new App(
     $router,
+    ['uri' => $_SERVER['REQUEST_URI'], 'method' => $_SERVER['REQUEST_METHOD']],
     [
-        'uri' => $_SERVER['REQUEST_URI'] ?? '/',
-        'method' => $_SERVER['REQUEST_METHOD'] ?? 'GET',
+        'host'      => $_ENV['DB_HOST'], 
+        'user'      => $_ENV['DB_USER'], 
+        'pass'      => $_ENV['DB_PASS'], 
+        'driver'    => $_ENV['DB_DRIVER'] ?? 'mysql',
     ]
 ))->run();
