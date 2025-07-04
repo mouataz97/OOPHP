@@ -3,8 +3,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\App;
- use App\Controllers\Router;
-// use App\Router;
+use App\Router;
 use App\Controllers\HomeController;
 use App\Controllers\InvoiceController;
 use App\View;
