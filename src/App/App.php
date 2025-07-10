@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace App;
 
@@ -13,11 +13,11 @@ class App
 {
     private static ?DB $db = null;
 
-    public function __construct(protected Router $router, protected array $request, protected array $config)
+    public function __construct(protected Router $router, protected array $request, protected Config $config)
     {
-        if (static::$db === null) {
-            static::$db = new DB($config);
-        }
+
+        static::$db = new DB($config->db ?? []);
+
     }
 
     public static function db(): DB

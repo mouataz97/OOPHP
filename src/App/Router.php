@@ -3,14 +3,21 @@
 declare(strict_types=1);
 
 namespace App;
+
 use App\Exception\RouteNotFoundException;
 
 class Router
 {
     private array $routes = [];
 
+    public function __construct()
+    {
+        echo "Router is working!";
+    }
+
     public function register(string $requestMethod, string $route, callable|array $action): self
     {
+        $requestMethod = strtolower($requestMethod);
         $this->routes[$requestMethod][$route] = $action;
         return $this;
     }
@@ -35,6 +42,7 @@ class Router
      */
     public function resolve(?string $requestURI = null, ?string $requestMethod = null): mixed
     {
+        $requestMethod = strtolower($requestMethod ?? 'get');
         $route = '/' . trim(explode('?', $requestURI ?? '/')[0], '/');
         $action = $this->routes[$requestMethod][$route] ?? null;
 
