@@ -12,7 +12,6 @@ class Router
 
     public function __construct()
     {
-        echo "Router is working!";
     }
 
     public function register(string $requestMethod, string $route, callable|array $action): self

@@ -7,7 +7,8 @@ class View
     public static function make(string $template, array $data = []): string
     {
         // Simple example: include a PHP template file and return its output
-        $templatePath = __DIR__ . '/../views/' . $template . '.php';
+        $basePath = defined('views_path') ? views_path : (__DIR__ . '/../views');
+        $templatePath = rtrim($basePath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $template . '.php';
         if (!file_exists($templatePath)) {
             return 'View not found: ' . htmlspecialchars($template);
         }

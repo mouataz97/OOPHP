@@ -4,15 +4,11 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-class Invoice extends Model
+class Invoice extends \App\Model
 {
-    public function __construct()
-    {
-        
-    }
     public function create(float $amount, int $userId): int
     {
-        $newInvoiceStmt = $this->db->prepare(
+        $stmt = $this->db->prepare(
             'INSERT INTO invoices (amount, user_id) 
             VALUES (?, ?)'
         );
@@ -20,5 +16,18 @@ class Invoice extends Model
         $stmt->execute([$amount, $userId]);
 
         return (int) $this->db->lastInsertId();
+    }
+
+    public function find(int $id): array
+    {
+        $stmt = $this->db->prepare(
+            'SELECT invoices.id, invoices.amount, users.full_name
+             FROM invoices
+             LEFT JOIN users ON users.id = invoices.user_id
+             WHERE invoices.id = ?'
+        );
+        $stmt->execute([$id]);
+        $invoice = $stmt->fetch();
+        return $invoice ?: [];
     }
 }
