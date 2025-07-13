@@ -1,15 +1,16 @@
 <?php
+declare(strict_types=1);
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\App;
-use App\Router;
 use App\Controllers\HomeController;
 use App\Controllers\InvoiceController;
-use App\View;
 use App\Config;
+use App\Router;
+use Dotenv\Dotenv;
 
-$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv = Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
 define('storage_path', __DIR__ . '/../storage');
@@ -24,7 +25,7 @@ $router
     ->get('/invoices/create', [InvoiceController::class, 'create'])
     ->post('/invoices/create', [InvoiceController::class, 'store']);
 
-    (new App(
+(new App(
         $router,
         ['uri' => $_SERVER['REQUEST_URI'], 'method' => $_SERVER['REQUEST_METHOD']],
         new Config($_ENV) // This line will now correctly instantiate the Config class
