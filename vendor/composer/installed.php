@@ -3,7 +3,7 @@
         'name' => 'mouataz/oophp',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '0266736c1c82b02f21d784718754560533ca7642',
+        'reference' => '0a7259a9c0c873f0e51f7eab3defd9d47a9cf2b8',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'mouataz/oophp' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '0266736c1c82b02f21d784718754560533ca7642',
+            'reference' => '0a7259a9c0c873f0e51f7eab3defd9d47a9cf2b8',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

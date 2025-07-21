@@ -3,4 +3,4 @@
     <testsuite name="Unit Tests">
         <directory>tests/Unit</directory>
     </testsuite>
-<?phpunit>
+</phpunit>
