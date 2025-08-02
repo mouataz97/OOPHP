@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 use App\Router;
 use App\Exception\RouteNotFoundException;
 use PHPUnit\Framework\Attributes\Test;
-use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 
 class RouterTest extends TestCase
 {
@@ -63,7 +63,7 @@ class RouterTest extends TestCase
         $this->assertEmpty((new Router())->routes());
     }
     #[Test]
-    #[DataProvider('routeNotFoundCases')]
+    #[DataProviderExternal(\Tests\DataProviders\RouterDataProvider::class, 'routeNotFoundCases')]
     public function it_throws_route_not_found_exception(
         string $requestUri, string $requestMethod): void
     {
@@ -80,14 +80,28 @@ class RouterTest extends TestCase
         $this->expectException(RouteNotFoundException::class);
         $this->router->resolve($requestUri, $requestMethod);
     }
-    
-    public static function routeNotFoundCases(): array
+    /** @test */
+    public function it_resolve_route_from_closure(): void
     {
-        return [
-            ['/users', 'put'],   // Method not registered
-            ['/invoices', 'post'], // Path not registered
-            ['/users', 'get'], // Method not registered
-            ['/users', 'post'], // Method not registered
-        ];
+        $this->router->get('/users', fn() => [1, 2, 3]);
+        $this->assertEquals(
+            [1,2,3],
+            $this->router->resolve('/users', 'get')
+        );
+    }
+    public function it_resolve_route():void 
+    {
+        $user = new class(){
+            public function index(): array
+            {
+                return [1,2,3];
+            }
+        };
+        $this->router->get('/users', [$user, 'index']);
+
+        $this->assertEquals(
+            [1,2,3],
+            $this->router->resolve('/users', 'get')
+        );
     }
 }
