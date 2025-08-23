@@ -27,6 +27,7 @@ class ComposerStaticInit2369b9e2c3e40dc94b6060f0e59ebd2e
         ),
         'P' => 
         array (
+            'Psr\\Container\\' => 14,
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
         ),
@@ -62,6 +63,10 @@ class ComposerStaticInit2369b9e2c3e40dc94b6060f0e59ebd2e
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
+        'Psr\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -84,7 +89,7 @@ class ComposerStaticInit2369b9e2c3e40dc94b6060f0e59ebd2e
         ),
         'App\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/App',
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 

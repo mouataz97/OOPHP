@@ -81,7 +81,7 @@ Section 3 - Advanced PHP (OOP)
     Lesson 3.0 - Intro to Testing
     Lesson 3.1 - Unit Testing - PHPUnit Part 1
     Lesson 3.2 - Mocking - PHPUnit Part 2
-    Lesson 3.3 - Dependency Injection & DI Containers
+    Lesson 3.3 - Dependency Injection & DI Containers 
     Lesson 3.4 - DI Container With & Without Reflection API
     Lesson 3.5 - DI Container With Interface Support
     Lesson 3.6 - Generators

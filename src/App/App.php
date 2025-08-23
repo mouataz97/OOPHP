@@ -5,20 +5,26 @@ declare(strict_types=1);
 namespace App;
 
 use App\Exception\RouteNotFoundException;
-// use App\View;  // View is in App namespace
-use App\View; // Update this line if View is in App\View namespace
-use App\DB;    // DB is in App namespace
-use App\Router; // Router is in App namespace
 
 class App
 {
-    private static ?DB $db = null;
+    private static DB $db;
+    private static Container $container;
 
     public function __construct(protected Router $router, protected array $request, protected array $config)
     {    
-        if (static::$db === null) {
-            static::$db = new DB($config);
-        }
+        static::$db = new DB($config->db ?? []);
+            static::$container = new Container();
+
+            static::$container->set(InvoiceService::class, function(Container $c){
+                return new InvoiceService(
+                    $c->get(SalesTaxService::class),
+                    $c->get(PaymentGateway::class),
+                    $c->get(EmailService::class)
+                );
+            }
+        );
+        static::$container->set(SalesTaxService::class, fn() => new SalesTaxService();
     }
 
     public static function db(): DB

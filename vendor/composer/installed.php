@@ -3,7 +3,7 @@
         'name' => 'mouataz/oophp',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '0a7259a9c0c873f0e51f7eab3defd9d47a9cf2b8',
+        'reference' => '7d1ae5d54e2a043f9e1205db841c2ae9501e06d1',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'mouataz/oophp' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '0a7259a9c0c873f0e51f7eab3defd9d47a9cf2b8',
+            'reference' => '7d1ae5d54e2a043f9e1205db841c2ae9501e06d1',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -126,6 +126,15 @@
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'psr/container' => array(
+            'pretty_version' => '2.0.2',
+            'version' => '2.0.2.0',
+            'reference' => 'c71ecc56dfe541dbd90c5360474fbc405f8d5963',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/container',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'sebastian/cli-parser' => array(
             'pretty_version' => '4.0.0',
